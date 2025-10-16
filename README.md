@@ -80,12 +80,10 @@ def read_root():
 def greet_name(name: str):
     return {"greeting": f"Hello {name}!"}
 
-class Number(BaseModel):
-    num: int
-
-@app.post("/square")
-def square_number(number: Number):
-    return {"result": number.num ** 2}
+@app.get("/square/{number}")
+def square_get(number: int):
+    """Allows GET /square/<number> so the endpoint is usable from a browser."""
+    return {"result": number ** 2}
 ```
 
 ---
